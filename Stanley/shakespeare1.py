@@ -16,4 +16,5 @@ for line in data.split("\n"):
                 words[word] = 1
 
 top_words = sorted(words.items(), key=lambda x: x[1], reverse=True)
-print([elt[0] for elt in top_words[:101]])
+top_100 = [elt[0] for elt in top_words[:101]]
+print(top_100)
