@@ -1,5 +1,6 @@
 import urllib.request
 import string
+import csv
 
 data = ""
 with urllib.request.urlopen("https://www.gutenberg.org/cache/epub/100/pg100.txt") as f:
@@ -18,3 +19,12 @@ for line in data.split("\n"):
 top_words = sorted(words.items(), key=lambda x: x[1], reverse=True)
 top_100 = [elt[0] for elt in top_words[:101]]
 [print(word) for word in top_100]
+
+# write data to file
+with open("./Stanley/wordFreq.csv", 'w') as f:
+    writer = csv.writer(f)
+    for elt in top_words:
+        try:
+            writer.writerow(elt)
+        except:
+            pass
