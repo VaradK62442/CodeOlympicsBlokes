@@ -1,6 +1,6 @@
 def read_in_file(fname):
     users = {}
-    # Create a dictionary {user: [friend_1, friend_2, ...]}
+    # create a dictionary {user: [friend_1, friend_2, ...]}
     with open(fname) as f:
         for line in f:
             user, friend = line.rstrip("\n").split(" ")
@@ -22,20 +22,27 @@ def find_groups(users):
                 g.update(users[user])
                 added = True
 
+        # if not already in groups list, make a new group
         if not added:
             groups.append(set(user))
             groups[-1].update(set([person for person in users[user]]))
 
+    # get lengths
     group_lengths = [len(g) for g in groups]
-    print(max(group_lengths))            
+    return max(group_lengths)         
 
 
 def main():
     users05 = read_in_file("./SoCS/friends05.txt")
-    find_groups(users05)
+    max05 = find_groups(users05)
 
     users10 = read_in_file("./SoCS/friends10.txt")
-    find_groups(users10)
+    max10 = find_groups(users10)
+
+    print(f'''
+    max group size for friends05: {max05}
+    max group size for friends10: {max10}
+    ''')
 
 
 if __name__ == "__main__":
