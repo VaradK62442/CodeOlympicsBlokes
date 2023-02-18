@@ -40,7 +40,7 @@ top_words_raj <- raj_words %>%
   count(title, word, sort = TRUE) %>% 
   # Keep top 15 in each play
   group_by(title) %>% 
-  top_n(15) %>% 
+  top_n(100) %>% 
   ungroup() %>% 
   # Make the words an ordered factor so they plot in order
   mutate(word = fct_inorder(word))
