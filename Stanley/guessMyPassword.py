@@ -14,7 +14,7 @@ def read_in_file(fname):
 
 def remove_elt(appears_after, elt_to_remove):
     # propagate guess, remove digits that are confirmed from dict
-    for k in appears_after.keys():
+    for k in appears_after:
         if elt_to_remove in appears_after[k]:
             appears_after[k].remove(elt_to_remove)
 
@@ -63,13 +63,13 @@ def decode(keylog):
         all_empty = True
 
         # next digit is digit that appears only after previous, and nothing else
-        for k in appears_after.keys():
+        for k in appears_after:
             if len(appears_after[k]) == 1 and appears_after[k] == {guess[-1]}:
                 guess += k
 
         appears_after = remove_elt(appears_after, guess[-2])
         
-        for k in appears_after.keys():
+        for k in appears_after:
             if len(appears_after[k]) != 0:
                 all_empty = False
 
