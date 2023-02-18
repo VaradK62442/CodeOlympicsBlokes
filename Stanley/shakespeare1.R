@@ -51,6 +51,6 @@ ggplot(top_words_raj, aes(y = fct_rev(word), x = n, fill = title)) +
   geom_col() + 
   guides(fill = FALSE) +
   labs(y = "Count", x = NULL, 
-       title = "15 most frequent words in four Shakespearean tragedies") +
+       title = "100 most frequent words in the Shakespearean tragedies") +
   facet_wrap(vars(title), scales = "free_y") +
   theme_bw()
