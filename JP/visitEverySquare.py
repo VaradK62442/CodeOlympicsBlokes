@@ -32,7 +32,7 @@ def monopoly():
 
 def main():
     circuit_lengths, totals = [], []
-    reps = 100000
+    reps = 1000
     for _ in range(reps):
         c, t = monopoly()
         circuit_lengths.append(c)
