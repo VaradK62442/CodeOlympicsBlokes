@@ -23,6 +23,8 @@ top_100 = [elt[0] for elt in top_words[:101]]
 # write data to file
 with open("./Stanley/wordFreq.csv", 'w') as f:
     writer = csv.writer(f)
+    # add headers
+    writer.writerow(("word", "count"))
     for elt in top_words:
         try:
             writer.writerow(elt)
