@@ -29,15 +29,19 @@ def find_groups(users):
 
     # get lengths
     group_lengths = [len(g) for g in groups]
-    return max(group_lengths)         
+    max_length = max(group_lengths)     
+    max_length_group_id = group_lengths.index(max_length)
+    biggest_group = groups[max_length_group_id]
+
+    return max_length, biggest_group    
 
 
 def main():
     users05 = read_in_file("./SoCS/friends05.txt")
-    max05 = find_groups(users05)
+    max05, biggest05 = find_groups(users05)
 
     users10 = read_in_file("./SoCS/friends10.txt")
-    max10 = find_groups(users10)
+    max10, biggest10 = find_groups(users10)
 
     print(f'''
     max group size for friends05: {max05}
