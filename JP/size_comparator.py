@@ -6,10 +6,26 @@ units = ''.join([letter for letter in letters if letter.isalpha()])
 
 # convert to metres
 if units == 'ft':
-    pass
+    conv_units = numbers / 3.281
 elif units == 'in':
-    pass
+    conv_units = (numbers / 12) / 3.281
 elif units == 'cm':
-    pass
+    conv_units = numbers / 100
 elif units == 'km':
-    pass
+    conv_units = numbers * 1000
+else:
+    conv_units = numbers
+
+
+# all in metres
+COMPARISONS = {
+    'Gilbert Scott Building': 84.7344,
+    'Titanic': 269,
+    'average height of UK males': 1.759,
+    'height of a brown bear': 1.5,
+    'caterpillar': 0.14,
+    'Universe': 8.8 * 10**26
+}
+
+for k in COMPARISONS:
+    print(f"Given measurement is approximately {round(conv_units / COMPARISONS[k], 4)} times as long as the {k}")
