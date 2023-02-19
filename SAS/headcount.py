@@ -95,6 +95,12 @@ def find_groups(arr):
 
         # will fail if there is a bottom right point equal distance from a top left
         # as the actual top left point
+        # e.g.
+        #     [1, 1, 0, 1, 1]
+        #     [1, 1, 0, 1, 1]
+        #     [1, 1, 0, 0, 0]
+        #     [1, 1, 0, 0, 0]
+        #     [1, 1, 0, 0, 0]
         closest_br_dist = min(list(dists.keys()))
         closest_br = dists[closest_br_dist]
 
