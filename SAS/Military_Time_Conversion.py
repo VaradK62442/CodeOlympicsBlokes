@@ -7,32 +7,37 @@ def main(s):
     p = inflect.engine()
 
     s = s.split(":")
-    temp = s[-1][-2:]
+    half = s[-1][-2:] # Saves "AM" or "PM"
 
+    # Converting strings to integers and removing AM/PM
     if len(s) == 2:
         s[0] = int(s[0])
         s[1] = int(s[1][:-2])
     else:
         s[0] = int(s[0][:-2])
 
-    if temp == "PM" and s[0] != 12:
+    if half == "PM" and s[0] != 12:
         s[0] += 12
-    elif temp == "AM" and s[0] == 12:
+    elif half == "AM" and s[0] == 12:
         s[0] += 12
         s[0] = s[0] % 24
 
+    # If format is "[number]AM/PM" return 1 word
     if len(s) == 1:
         return p.number_to_words(s[0]).replace("-", " ")
 
-    res = ""
     # Adding hours
-    res += (("zero " if s[0] < 10 and s[1] != 0 else "") +
-            p.number_to_words(s[0]).replace("-", " "))
-    # Adding minutes
-    res += " hundred hours" if s[1] == 0 else (" zero " if s[1] < 10 else " ") + \
-            p.number_to_words(s[1]).replace("-", " ")
-    return res
+    # "zero" before number is omitted when exactly on the hour
+    res = (("zero " if s[0] < 10 and s[1] != 0 else "") +
+           p.number_to_words(s[0]).replace("-", " "))
+    # Adding either "hundred hours" or minutes
+    if s[1] == 0:
+        return res + " hundred hours"
+    return res + (" zero " if s[1] < 10 else " ") + \
+        p.number_to_words(s[1]).replace("-", " ")
 
+
+print(main(string))
 
 assert main("12AM") == "zero"
 assert main("7AM") == "seven"
