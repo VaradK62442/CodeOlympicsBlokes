@@ -122,6 +122,9 @@ def find_groups(arr):
         is_valid = False
         invalid_brs = []
 
+        # instead of finding distances, could just do
+        # check_valid(tl, br) until a valid position is found (?)
+
         while not is_valid:
             # keep repeating until valid br is chosen
             # for each bottom right coord    

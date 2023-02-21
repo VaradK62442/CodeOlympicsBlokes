@@ -38,8 +38,8 @@ def decode(keylog):
                     appears_after[n].add(elt[i-1])
 
     # debugging comments
-    # [print(elt) for elt in keylog]
-    # [print(f'{k}: {v}') for k, v in appears_after.items()]
+    [print(elt) for elt in keylog]
+    [print(f'{k}: {v}') for k, v in appears_after.items()]
 
     # find smallest set and propagate down
     # by removing numbers that are accounted for in the guess
@@ -78,7 +78,7 @@ def decode(keylog):
 
 
 def main():
-    keylog = read_in_file("./Stanley/keylog.txt")
+    keylog = read_in_file("./Stanley/password/keylog.txt")
     guess = decode(keylog)
     print(guess)
 
